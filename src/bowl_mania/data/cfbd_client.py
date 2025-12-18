@@ -233,22 +233,22 @@ class CFBDClient:
             try:
                 advanced_stats = self.get_advanced_team_stats(year)
                 all_data['advanced_stats'].append(advanced_stats)
-            except:
-                print(f"Advanced stats not available for {year}")
+            except Exception as e:
+                print(f"Advanced stats not available for {year}: {e}")
             
             # Get betting lines
             try:
                 betting_lines = self.get_betting_lines(year, season_type='postseason')
                 all_data['betting_lines'].append(betting_lines)
-            except:
-                print(f"Betting lines not available for {year}")
+            except Exception as e:
+                print(f"Betting lines not available for {year}: {e}")
             
             # Get SP+ ratings
             try:
                 sp_ratings = self.get_sp_ratings(year)
                 all_data['sp_ratings'].append(sp_ratings)
-            except:
-                print(f"SP+ ratings not available for {year}")
+            except Exception as e:
+                print(f"SP+ ratings not available for {year}: {e}")
         
         # Combine data from all years
         combined_data = {

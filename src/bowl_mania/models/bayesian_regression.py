@@ -163,7 +163,7 @@ class BayesianRegression:
                 var_names=['y_obs']
             )
             
-        predictions = posterior_predictive.posterior_predictive['y_obs'].values
+        predictions = posterior_predictive['y_obs'].values
         
         if return_samples:
             return predictions
