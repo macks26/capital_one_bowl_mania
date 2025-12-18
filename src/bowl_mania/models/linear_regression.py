@@ -9,6 +9,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression as SKLinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, train_test_split
+from scipy.stats import norm
 from typing import Optional, Tuple, Dict, Any
 
 
@@ -91,7 +92,6 @@ class LinearRegression:
             spread_std = 10.0  # typical point spread standard deviation
         
         # Calculate probability that predicted spread beats actual spread
-        from scipy.stats import norm
         z_score = (predicted_spread - actual_spread) / spread_std
         cover_prob = norm.cdf(z_score)
         
