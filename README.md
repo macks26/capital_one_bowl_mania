@@ -60,8 +60,8 @@ cd capital_one_bowl_mania
 
 2. Create a virtual environment (recommended):
 ```bash
-conda create -n bowl_mania python=3.9
-conda activate bowl_mania
+conda create -n myenv python=3.9
+conda activate myenv
 ```
 
 3. Install dependencies:
@@ -71,7 +71,13 @@ pip install -r requirements.txt
 
 4. Set up your CFBD API key (optional but recommended):
    - Get a free API key from [CollegeFootballData.com](https://collegefootballdata.com/)
-   - Set the environment variable:
+   - Set the environment variable in conda environment (preferred):
+     ```bash
+     conda env config vars set CFBD_API_KEY="your_api_key_here"
+     conda deactivate
+     conda activate myenv
+     ```
+   - Or set the environment variable:
      ```bash
      export CFBD_API_KEY="your_api_key_here"
      ```
