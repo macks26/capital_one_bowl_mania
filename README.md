@@ -60,8 +60,8 @@ cd capital_one_bowl_mania
 
 2. Create a virtual environment (recommended):
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+conda create -n bowl_mania python=3.9
+conda activate bowl_mania
 ```
 
 3. Install dependencies:
