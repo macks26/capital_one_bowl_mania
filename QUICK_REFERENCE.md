@@ -192,6 +192,8 @@ To use your API key:
 ## Error Handling
 
 ```python
+import requests
+
 try:
     games = get_bowl_games(2023)
 except requests.exceptions.HTTPError as e:

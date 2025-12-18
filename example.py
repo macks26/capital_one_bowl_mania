@@ -6,6 +6,7 @@ and betting lines from the CollegeFootballData API.
 """
 
 import json
+import requests
 from cfbd_api import (
     get_bowl_games,
     get_team_season_stats,
@@ -45,7 +46,7 @@ def main():
             if game.get('home_points') is not None:
                 print(f"  Score: {game.get('away_team')} {game.get('away_points')} - "
                       f"{game.get('home_team')} {game.get('home_points')}")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching bowl games: {e}")
     
     # Example 2: Get team season stats
@@ -70,7 +71,7 @@ def main():
             print(f"  Defense:")
             print(f"    Success Rate: {defense.get('successRate', 'N/A')}")
             print(f"    Explosiveness: {defense.get('explosiveness', 'N/A')}")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching team stats: {e}")
     
     # Example 3: Get SP+ ratings (includes SOS)
@@ -86,7 +87,7 @@ def main():
             print(f"   Offense: {rating.get('offense', 'N/A')}")
             print(f"   Defense: {rating.get('defense', 'N/A')}")
             print(f"   Special Teams: {rating.get('specialTeams', 'N/A')}")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching SP+ ratings: {e}")
     
     # Example 4: Get FPI ratings
@@ -100,7 +101,7 @@ def main():
             print(f"\n{i}. {rating.get('team', 'Unknown')}")
             print(f"   FPI: {rating.get('fpi', 'N/A')}")
             print(f"   Strength of Schedule: {rating.get('sos', 'N/A')}")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching FPI ratings: {e}")
     
     # Example 5: Get betting lines for bowl games
@@ -133,7 +134,7 @@ def main():
                             print(f"    Over/Under: {over_under}")
                         count += 1
                         break
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching betting lines: {e}")
     
     # Example 6: Get complete data in one call
@@ -154,7 +155,7 @@ def main():
             json.dump(complete_data, f, indent=2)
         print(f"\nComplete data saved to: {output_file}")
         
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Error fetching complete data: {e}")
     
     print("\n" + "=" * 80)
